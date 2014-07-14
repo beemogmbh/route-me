@@ -577,4 +577,9 @@
     [self recalculateGeometryAnimated:NO];
 }
 
+- (void)setIgnorePathUpdates:(BOOL)value
+{
+    ignorePathUpdates = value;
+}
+
 @end
