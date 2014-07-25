@@ -582,4 +582,9 @@
     ignorePathUpdates = value;
 }
 
+- (NSArray*)points
+{
+    return points;
+}
+
 @end

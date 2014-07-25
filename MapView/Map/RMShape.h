@@ -141,5 +141,8 @@
 /** Setter to ignore path updates
  *   @param value The value whether path updates should be ignored or not. */
 - (void)setIgnorePathUpdates:(BOOL)value;
+/**
+ * @return array of cllocation points */
+- (NSArray*)points;
 
 @end
