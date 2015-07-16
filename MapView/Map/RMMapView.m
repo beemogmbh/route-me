@@ -1470,12 +1470,13 @@
             //
             _currentCallout.delegate = nil;
 
+            _currentCallout.permittedArrowDirection = SMCalloutArrowDirectionDown;
             [_currentCallout presentCalloutFromRect:_currentAnnotation.layer.bounds
                                             inLayer:_currentAnnotation.layer
                                  constrainedToLayer:self.layer
-                           permittedArrowDirections:SMCalloutArrowDirectionDown
                                            animated:NO];
 
+            
             _currentCallout.delegate = self;
         }
 
@@ -1768,8 +1769,9 @@
 {
     _currentAnnotation = [anAnnotation retain];
 
-    _currentCallout = [SMCalloutView new];
-
+    _currentCallout = [SMCalloutView platformCalloutView];
+    _currentCallout.tintColor = [UIColor greenColor];
+    
     _currentCallout.title    = anAnnotation.title;
     _currentCallout.subtitle = anAnnotation.subtitle;
 
@@ -1797,10 +1799,11 @@
 
     anAnnotation.layer.zPosition = _currentCallout.layer.zPosition = MAXFLOAT;
 
+    _currentCallout.permittedArrowDirection = SMCalloutArrowDirectionDown;
+    
     [_currentCallout presentCalloutFromRect:anAnnotation.layer.bounds
                                     inLayer:anAnnotation.layer
                          constrainedToLayer:self.layer
-                   permittedArrowDirections:SMCalloutArrowDirectionDown
                                    animated:animated];
 }
 
@@ -3461,6 +3464,34 @@
             }
         }
     }
+}
+
+- (void)rotate:(CGFloat)angle
+{
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.5];
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                     animations:^(void)
+     {
+         _mapTransform = CGAffineTransformMakeRotation(angle);
+         _annotationTransform = CATransform3DMakeAffineTransform(CGAffineTransformMakeRotation(-angle));
+         
+         _mapScrollView.transform = _mapTransform;
+         _overlayView.transform   = _mapTransform;
+         
+         for (RMAnnotation *annotation in _annotations)
+             if ([annotation.layer isKindOfClass:[RMMarker class]] && ! annotation.isUserLocationAnnotation)
+                 annotation.layer.transform = _annotationTransform;
+         
+         [self correctPositionOfAllAnnotations];
+     }
+                     completion:nil];
+    
+    [CATransaction commit];
 }
 
 @end

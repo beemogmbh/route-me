@@ -512,8 +512,6 @@
 			isa = PBXGroup;
 			children = (
 				DD6B651A16A9ECD8007D1CBA /* MapView_Prefix.pch */,
-				96492C3F0FA8AD3400EBA6D2 /* RMGlobalConstants.h */,
-				B1EB26C510B5D8E6009F8658 /* RMNotifications.h */,
 				B8C974B30E8A23C5007D16AD /* Coordinate Systems */,
 				B83E64E20E80E73F001663B6 /* Projections */,
 				B83E64CE0E80E73F001663B6 /* Tile & Overlay Rendering */,
