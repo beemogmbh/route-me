@@ -1769,14 +1769,13 @@
 {
     _currentAnnotation = [anAnnotation retain];
 
-    _currentCallout = [SMCalloutView platformCalloutView];
-    _currentCallout.tintColor = [UIColor greenColor];
+    _currentCallout = [SMCalloutView new];
     
     _currentCallout.title    = anAnnotation.title;
     _currentCallout.subtitle = anAnnotation.subtitle;
 
     _currentCallout.calloutOffset = anAnnotation.layer.calloutOffset;
-
+;
     if (anAnnotation.layer.leftCalloutAccessoryView)
     {
         if ([anAnnotation.layer.leftCalloutAccessoryView isKindOfClass:[UIControl class]])
@@ -3494,4 +3493,8 @@
     [CATransaction commit];
 }
 
+-(void)calloutViewClicked:(SMCalloutView *)calloutView
+{
+    [self tapOnLabelForAnnotation:(RMAnnotation *)[self selectedAnnotation] atPoint:    [[self selectedAnnotation] position]];
+}
 @end
