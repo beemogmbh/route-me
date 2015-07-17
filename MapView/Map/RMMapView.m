@@ -203,6 +203,7 @@
 @synthesize displayHeadingCalibration = _displayHeadingCalibration;
 @synthesize missingTilesDepth = _missingTilesDepth;
 @synthesize debugTiles = _debugTiles;
+@synthesize calloutShouldDisappearOnTap = _calloutShouldDisappearOnTap;
 
 #pragma mark -
 #pragma mark Initialization
@@ -1735,7 +1736,7 @@
 
 - (void)deselectAnnotation:(RMAnnotation *)annotation animated:(BOOL)animated
 {
-    if ([annotation isEqual:_currentAnnotation] && _currentCallout)
+    if ([annotation isEqual:_currentAnnotation] && _currentCallout && _calloutShouldDisappearOnTap)
     {
         [_currentCallout dismissCalloutAnimated:animated];
 

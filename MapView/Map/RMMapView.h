@@ -130,6 +130,7 @@ typedef NS_ENUM(NSUInteger, RMMapDecelerationMode) {
 /** A Boolean value indicating whether to draw tile borders and z/x/y numbers on tile images for debugging purposes. Defaults to `NO`. */
 @property (nonatomic, assign) BOOL debugTiles;
 
+@property (nonatomic, assign) BOOL calloutShouldDisappearOnTap;
 #pragma mark - Initializers
 
 /** @name Initializing a Map View */
