@@ -215,6 +215,8 @@
                                minZoomLevel:(float)initialTileSourceMinZoomLevel
                             backgroundImage:(UIImage *)backgroundImage
 {
+    _calloutShouldDisappearOnTap = YES;
+    
     _constrainMovement = _constrainMovementByUser = _enableBouncing = _zoomingInPivotsAroundCenter = NO;
     _enableDragging = YES;
 
