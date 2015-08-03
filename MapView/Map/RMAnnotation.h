@@ -147,4 +147,8 @@
 // Used internally
 @property (nonatomic, retain) RMMapView *mapView;
 
+
+/** A Boolean value if a callout should disappear if an annotation is deselected. Default is 'YES' */
+@property (nonatomic, assign) BOOL calloutShouldDisappearOnTap;
+
 @end

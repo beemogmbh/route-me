@@ -203,7 +203,6 @@
 @synthesize displayHeadingCalibration = _displayHeadingCalibration;
 @synthesize missingTilesDepth = _missingTilesDepth;
 @synthesize debugTiles = _debugTiles;
-@synthesize calloutShouldDisappearOnTap = _calloutShouldDisappearOnTap;
 
 #pragma mark -
 #pragma mark Initialization
@@ -215,8 +214,6 @@
                                minZoomLevel:(float)initialTileSourceMinZoomLevel
                             backgroundImage:(UIImage *)backgroundImage
 {
-    _calloutShouldDisappearOnTap = YES;
-    
     _constrainMovement = _constrainMovementByUser = _enableBouncing = _zoomingInPivotsAroundCenter = NO;
     _enableDragging = YES;
 
@@ -1738,7 +1735,7 @@
 
 - (void)deselectAnnotation:(RMAnnotation *)annotation animated:(BOOL)animated
 {
-    if ([annotation isEqual:_currentAnnotation] && _currentCallout && _calloutShouldDisappearOnTap)
+    if ([annotation isEqual:_currentAnnotation] && _currentCallout && annotation.calloutShouldDisappearOnTap)
     {
         [_currentCallout dismissCalloutAnimated:animated];
 
