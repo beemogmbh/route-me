@@ -47,6 +47,8 @@
 		23A0AAEB0EB90AA6003A4521 /* RMFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 23A0AAEA0EB90AA6003A4521 /* RMFoundation.h */; };
 		25757F4F1291C8640083D504 /* RMCircle.h in Headers */ = {isa = PBXBuildFile; fileRef = 25757F4D1291C8640083D504 /* RMCircle.h */; };
 		25757F501291C8640083D504 /* RMCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 25757F4E1291C8640083D504 /* RMCircle.m */; };
+		333362CC1B6F69DB00B01C11 /* RMCustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 333362CA1B6F69DB00B01C11 /* RMCustomCalloutView.m */; };
+		333362D11B72155700B01C11 /* RMCustomCalloutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 333362D01B72155700B01C11 /* RMCustomCalloutView.h */; };
 		444FEC1E17A5BF7100F3798C /* RMWMS.h in Headers */ = {isa = PBXBuildFile; fileRef = 444FEC1A17A5BF7100F3798C /* RMWMS.h */; };
 		444FEC1F17A5BF7100F3798C /* RMWMS.m in Sources */ = {isa = PBXBuildFile; fileRef = 444FEC1B17A5BF7100F3798C /* RMWMS.m */; };
 		444FEC2017A5BF7100F3798C /* RMWMSSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 444FEC1C17A5BF7100F3798C /* RMWMSSource.h */; };
@@ -185,6 +187,8 @@
 		25757F4D1291C8640083D504 /* RMCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCircle.h; sourceTree = "<group>"; };
 		25757F4E1291C8640083D504 /* RMCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCircle.m; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		333362CA1B6F69DB00B01C11 /* RMCustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCustomCalloutView.m; path = Map/RMCustomCalloutView.m; sourceTree = "<group>"; };
+		333362D01B72155700B01C11 /* RMCustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCustomCalloutView.h; path = Map/RMCustomCalloutView.h; sourceTree = "<group>"; };
 		444FEC1A17A5BF7100F3798C /* RMWMS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMWMS.h; sourceTree = "<group>"; };
 		444FEC1B17A5BF7100F3798C /* RMWMS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMWMS.m; sourceTree = "<group>"; };
 		444FEC1C17A5BF7100F3798C /* RMWMSSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMWMSSource.h; sourceTree = "<group>"; };
@@ -357,6 +361,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		333362CD1B71FE7000B01C11 /* CustomCalloutView */ = {
+			isa = PBXGroup;
+			children = (
+				333362D01B72155700B01C11 /* RMCustomCalloutView.h */,
+				333362CA1B6F69DB00B01C11 /* RMCustomCalloutView.m */,
+			);
+			name = CustomCalloutView;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		B83E64CE0E80E73F001663B6 /* Tile & Overlay Rendering */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +477,7 @@
 				B8C974690E8A1A50007D16AD /* RMMapView.h */,
 				B8C9746A0E8A1A50007D16AD /* RMMapView.m */,
 				12F2031E0EBB65E9003D7B6B /* RMMapViewDelegate.h */,
+				333362CD1B71FE7000B01C11 /* CustomCalloutView */,
 				B83E64EB0E80E73F001663B6 /* Tile Sources */,
 				B83E64CF0E80E73F001663B6 /* Tile Cache */,
 				B86F26A80E8742ED007A3773 /* Annotation Layers */,
@@ -605,6 +620,7 @@
 				DD8FD7541559E4A40044D96F /* RMUserLocation.h in Headers */,
 				DDA6B8BD155CAB67003DB5D8 /* RMUserTrackingBarButtonItem.h in Headers */,
 				16F3581B15864135003A3AD9 /* RMMapScrollView.h in Headers */,
+				333362D11B72155700B01C11 /* RMCustomCalloutView.h in Headers */,
 				16F98C961590CFF000FF90CE /* RMShape.h in Headers */,
 				16FBF07615936BF1004ECAD1 /* RMTileSourcesContainer.h in Headers */,
 				161E563A1594664E00B00BB6 /* RMOpenSeaMapLayer.h in Headers */,
@@ -730,6 +746,7 @@
 				D1437B36122869E400888DAE /* RMDBMapSource.m in Sources */,
 				25757F501291C8640083D504 /* RMCircle.m in Sources */,
 				16EC85D3133CA6C300219947 /* RMAbstractMercatorTileSource.m in Sources */,
+				333362CC1B6F69DB00B01C11 /* RMCustomCalloutView.m in Sources */,
 				16EC85D5133CA6C300219947 /* RMAbstractWebMapSource.m in Sources */,
 				16EC85D7133CA6C300219947 /* RMCacheObject.m in Sources */,
 				160EEDB013D41DEC007C5501 /* RMAnnotation.m in Sources */,

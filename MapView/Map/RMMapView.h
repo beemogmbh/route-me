@@ -130,6 +130,13 @@ typedef NS_ENUM(NSUInteger, RMMapDecelerationMode) {
 /** A Boolean value indicating whether to draw tile borders and z/x/y numbers on tile images for debugging purposes. Defaults to `NO`. */
 @property (nonatomic, assign) BOOL debugTiles;
 
+/** Backgroundcolor for the callout background */
+@property (nonatomic, copy) UIColor *currentCalloutBackgroundColor;
+/** Highlighted backgroundcolor for the callout background */
+@property (nonatomic, copy) UIColor *currentCalloutHighlightedBackgroundColor;
+/** Textcolor for the callout title text */
+@property (nonatomic, copy) UIColor *currentCalloutTextColor;
+
 #pragma mark - Initializers
 
 /** @name Initializing a Map View */
@@ -501,5 +508,8 @@ typedef NS_ENUM(NSUInteger, RMMapDecelerationMode) {
  /** Set the rotation of the mapview.
   *  @param angle The angle to rotate the mapview.*/
 - (void)rotate:(CGFloat)angle;
+
+
+
 
 @end

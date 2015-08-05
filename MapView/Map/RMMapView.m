@@ -50,6 +50,7 @@
 #import "RMUserLocation.h"
 
 #import "SMCalloutView.h"
+#import "RMCustomCalloutView.h"
 
 #pragma mark --- begin constants ----
 
@@ -203,6 +204,9 @@
 @synthesize displayHeadingCalibration = _displayHeadingCalibration;
 @synthesize missingTilesDepth = _missingTilesDepth;
 @synthesize debugTiles = _debugTiles;
+@synthesize currentCalloutBackgroundColor = _currentCalloutBackgroundColor;
+@synthesize currentCalloutHighlightedBackgroundColor = _currentCalloutHighlightedBackgroundColor;
+@synthesize currentCalloutTextColor = _currentCalloutTextColor;
 
 #pragma mark -
 #pragma mark Initialization
@@ -214,6 +218,10 @@
                                minZoomLevel:(float)initialTileSourceMinZoomLevel
                             backgroundImage:(UIImage *)backgroundImage
 {
+    _currentCalloutBackgroundColor = [UIColor whiteColor];
+    _currentCalloutHighlightedBackgroundColor = [[UIColor alloc] initWithWhite:1 alpha:0.7];
+    _currentCalloutTextColor = [UIColor blackColor];
+    
     _constrainMovement = _constrainMovementByUser = _enableBouncing = _zoomingInPivotsAroundCenter = NO;
     _enableDragging = YES;
 
@@ -1771,11 +1779,39 @@
 
     _currentCallout = [SMCalloutView new];
     
+    // We need this because SMCalloutView don't allow to change the title textcolor
+    // so we make a custom title label
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.frame = (CGRect){ .origin=titleLabel.frame.origin, .size.width=titleLabel.frame.size.width, .size.height=21 };
+    titleLabel.opaque = NO;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    titleLabel.textColor = _currentCalloutTextColor;
+    titleLabel.text = anAnnotation.title;
+
+    _currentCallout.titleView = titleLabel;
+    
+    if (anAnnotation.subtitle != nil) {
+        UILabel *subtitleLabel = [UILabel new];
+        subtitleLabel.frame = (CGRect){ .origin=titleLabel.frame.origin, .size.width=titleLabel.frame.size.width, .size.height=15 };
+        subtitleLabel.opaque = NO;
+        subtitleLabel.backgroundColor = [UIColor clearColor];
+        subtitleLabel.font = [UIFont systemFontOfSize:12];
+        subtitleLabel.textColor = _currentCalloutTextColor;
+        subtitleLabel.text = anAnnotation.subtitle;
+        
+        _currentCallout.subtitleView = subtitleLabel;
+    }
+    
+    RMCustomCalloutView *calloutBackgroundView = [[RMCustomCalloutView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) andBackgroundColor:_currentCalloutBackgroundColor withHighlightedBackgroundColor:_currentCalloutHighlightedBackgroundColor];
+
+    [_currentCallout setBackgroundView: calloutBackgroundView];
+    
     _currentCallout.title    = anAnnotation.title;
     _currentCallout.subtitle = anAnnotation.subtitle;
 
     _currentCallout.calloutOffset = anAnnotation.layer.calloutOffset;
-;
+
     if (anAnnotation.layer.leftCalloutAccessoryView)
     {
         if ([anAnnotation.layer.leftCalloutAccessoryView isKindOfClass:[UIControl class]])
@@ -1804,6 +1840,8 @@
                                     inLayer:anAnnotation.layer
                          constrainedToLayer:self.layer
                                    animated:animated];
+    
+   
 }
 
 - (NSTimeInterval)calloutView:(SMCalloutView *)calloutView delayForRepositionWithSize:(CGSize)offset
