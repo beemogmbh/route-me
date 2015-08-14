@@ -113,7 +113,7 @@ static UIImage *borderArrowImage = nil, *defaultArrowImage = nil, *highlightedAr
     BOOL pointingUp = self.arrowPoint.y < self.frameHeight/2;
     
     // if we're pointing up, we'll need to push almost everything down a bit
-    CGFloat dy = pointingUp ? TOP_ANCHOR_MARGIN : 0;
+    CGFloat dy = pointingUp ? TOP_ANCHOR_MARGIN : -0.6;
     
     self.containerView.frame = CGRectMake(0, dy, self.frameWidth, self.frameHeight - self.arrowView.frameHeight + 0.5);
     self.containerBorderView.frame = CGRectInset(self.containerView.bounds, -0.5, -0.5);
