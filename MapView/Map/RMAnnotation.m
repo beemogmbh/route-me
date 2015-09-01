@@ -52,7 +52,6 @@
 @synthesize position;
 @synthesize quadTreeNode;
 @synthesize isUserLocationAnnotation;
-@synthesize calloutShouldDisappearOnTap;
 
 + (instancetype)annotationWithMapView:(RMMapView *)aMapView coordinate:(CLLocationCoordinate2D)aCoordinate andTitle:(NSString *)aTitle
 {
@@ -63,8 +62,6 @@
 {
     if (!(self = [super init]))
         return nil;
-
-    self.calloutShouldDisappearOnTap = YES;
     
     self.mapView      = aMapView;
     self.coordinate   = aCoordinate;

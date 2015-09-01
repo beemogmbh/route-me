@@ -130,19 +130,4 @@ static UIImage *borderArrowImage = nil, *defaultArrowImage = nil, *highlightedAr
     }
 }
 
-- (CALayer *)contentMask {
-    
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0);
-    
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    UIImage *maskImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    CALayer *layer = [CALayer layer];
-    layer.frame = self.bounds;
-    layer.contents = (id)maskImage.CGImage;
-    return layer;
-}
-
 @end

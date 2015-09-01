@@ -1525,6 +1525,10 @@
 {
     CALayer *hit = [_overlayView overlayHitTest:[recognizer locationInView:self]];
 
+    if (![hit isKindOfClass:[RMMarker class]]) {
+        return;
+    }
+    
     if (_currentAnnotation && ! [hit isEqual:_currentAnnotation.layer])
     {
         [self deselectAnnotation:_currentAnnotation animated:( ! [hit isKindOfClass:[RMMarker class]])];
@@ -1743,7 +1747,7 @@
 
 - (void)deselectAnnotation:(RMAnnotation *)annotation animated:(BOOL)animated
 {
-    if ([annotation isEqual:_currentAnnotation] && _currentCallout && annotation.calloutShouldDisappearOnTap)
+    if ([annotation isEqual:_currentAnnotation] && _currentCallout)
     {
         [_currentCallout dismissCalloutAnimated:animated];
 
