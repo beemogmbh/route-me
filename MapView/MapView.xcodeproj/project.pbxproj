@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		126693040EB76C0B00E002D5 /* RMConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 126692A00EB75C0A00E002D5 /* RMConfiguration.m */; };
+		14E6089A1BA814C6007CABA0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B8474BC00EB4019A006A0BC1 /* libsqlite3.dylib */; };
 		1606C9FE13D86BA400547581 /* RMOpenCycleMapSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 1606C9FC13D86BA300547581 /* RMOpenCycleMapSource.h */; };
 		1606C9FF13D86BA400547581 /* RMOpenCycleMapSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1606C9FD13D86BA300547581 /* RMOpenCycleMapSource.m */; };
 		1607499514E120A100D535F5 /* RMGenericMapSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 1607499314E120A100D535F5 /* RMGenericMapSource.h */; };
@@ -271,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E6089A1BA814C6007CABA0 /* libsqlite3.dylib in Frameworks */,
 				B8C974500E8A19B2007D16AD /* CoreFoundation.framework in Frameworks */,
 				B8C974510E8A19B2007D16AD /* CoreGraphics.framework in Frameworks */,
 				B8C974520E8A19B2007D16AD /* CoreLocation.framework in Frameworks */,
