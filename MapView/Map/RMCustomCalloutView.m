@@ -113,9 +113,11 @@ static UIImage *borderArrowImage = nil, *defaultArrowImage = nil, *highlightedAr
     BOOL pointingUp = self.arrowPoint.y < self.frameHeight/2;
     
     // if we're pointing up, we'll need to push almost everything down a bit
-    CGFloat dy = pointingUp ? TOP_ANCHOR_MARGIN : -0.6;
+    CGFloat dy = pointingUp ? TOP_ANCHOR_MARGIN : 0;
     
-    self.containerView.frame = CGRectMake(0, dy, self.frameWidth, self.frameHeight - self.arrowView.frameHeight + 0.5);
+    CGFloat overlapping = 0.25;
+    
+    self.containerView.frame = CGRectMake(0, dy, self.frameWidth, self.frameHeight - self.arrowView.frameHeight + overlapping);
     self.containerBorderView.frame = CGRectInset(self.containerView.bounds, -0.5, -0.5);
     
     self.arrowView.frameX = roundf(self.arrowPoint.x - self.arrowView.frameWidth / 2);
@@ -125,7 +127,7 @@ static UIImage *borderArrowImage = nil, *defaultArrowImage = nil, *highlightedAr
         self.arrowView.transform = CGAffineTransformMakeRotation(M_PI);
     }
     else {
-        self.arrowView.frameY = self.containerView.frameHeight - 0.5;
+        self.arrowView.frameY = self.containerView.frameHeight - overlapping;
         self.arrowView.transform = CGAffineTransformIdentity;
     }
 }
