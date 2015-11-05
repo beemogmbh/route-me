@@ -77,6 +77,7 @@
     self.hasBoundingBox    = NO;
     self.enabled           = YES;
     self.clusteringEnabled = YES;
+    self.bringToTop        = NO;
 
     self.isUserLocationAnnotation = NO;
 

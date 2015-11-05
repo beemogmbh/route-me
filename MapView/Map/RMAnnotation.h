@@ -40,7 +40,7 @@
     RMProjectedPoint projectedLocation;
     RMProjectedRect  projectedBoundingBox;
     BOOL hasBoundingBox;
-    BOOL enabled, clusteringEnabled;
+    BOOL enabled, clusteringEnabled, bringToTop;
 
     RMMapLayer *layer;
     RMQuadTreeNode *quadTreeNode;
@@ -86,6 +86,8 @@
 
 /** Whether the annotation should be clustered when map view clustering is enabled. Defaults to `YES`. */
 @property (nonatomic, assign) BOOL clusteringEnabled;
+
+@property (nonatomic, assign) BOOL bringToTop;
 
 /** @name Representing an Annotation Visually */
 

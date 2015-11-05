@@ -2898,8 +2898,13 @@
         return NSOrderedSame;
     }];
 
-    for (CGFloat i = 0; i < [sortedAnnotations count]; i++)
-        ((RMAnnotation *)[sortedAnnotations objectAtIndex:i]).layer.zPosition = (CGFloat)i;
+    for (CGFloat i = 0; i < [sortedAnnotations count]; i++) {
+        if(((RMAnnotation *)[sortedAnnotations objectAtIndex:i]).bringToTop) {
+            ((RMAnnotation *)[sortedAnnotations objectAtIndex:i]).layer.zPosition = (CGFloat)(i + [sortedAnnotations count]);
+        } else {
+            ((RMAnnotation *)[sortedAnnotations objectAtIndex:i]).layer.zPosition = (CGFloat)i;
+        }
+    }
 
     // bring any active callout annotation to the front
     //
