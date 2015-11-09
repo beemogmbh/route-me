@@ -48,7 +48,7 @@
 @synthesize projectedLocation;
 @synthesize projectedBoundingBox;
 @synthesize hasBoundingBox;
-@synthesize enabled, clusteringEnabled;
+@synthesize enabled, clusteringEnabled, bringToTop;
 @synthesize position;
 @synthesize quadTreeNode;
 @synthesize isUserLocationAnnotation;
