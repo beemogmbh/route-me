@@ -3520,7 +3520,7 @@
     
     [UIView animateWithDuration:0.5
                           delay:0.0
-                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseInOut |UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
      {
          _mapTransform = CGAffineTransformMakeRotation(angle);
